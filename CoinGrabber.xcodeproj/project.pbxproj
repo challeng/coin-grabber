@@ -15,6 +15,8 @@
 		49E844931E5BEEC20024E107 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E844911E5BEEC20024E107 /* Main.storyboard */; };
 		49E844951E5BEEC20024E107 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49E844941E5BEEC20024E107 /* Assets.xcassets */; };
 		49E844981E5BEEC20024E107 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49E844961E5BEEC20024E107 /* LaunchScreen.storyboard */; };
+		49F07D091E8200A800AFD134 /* player.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 49F07D081E8200A800AFD134 /* player.atlas */; };
+		49F07D0D1E8200DF00AFD134 /* floor.png in Resources */ = {isa = PBXBuildFile; fileRef = 49F07D0C1E8200DF00AFD134 /* floor.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		49E844941E5BEEC20024E107 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49E844971E5BEEC20024E107 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49E844991E5BEEC20024E107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49F07D081E8200A800AFD134 /* player.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = player.atlas; sourceTree = "<group>"; };
+		49F07D0C1E8200DF00AFD134 /* floor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = floor.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 		49E844861E5BEEC20024E107 /* CoinGrabber */ = {
 			isa = PBXGroup;
 			children = (
+				49F07D0C1E8200DF00AFD134 /* floor.png */,
+				49F07D081E8200A800AFD134 /* player.atlas */,
 				49E844871E5BEEC20024E107 /* AppDelegate.swift */,
 				49E844891E5BEEC20024E107 /* GameScene.sks */,
 				49E8448B1E5BEEC20024E107 /* Actions.sks */,
@@ -132,6 +138,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49F07D091E8200A800AFD134 /* player.atlas in Resources */,
+				49F07D0D1E8200DF00AFD134 /* floor.png in Resources */,
 				49E844931E5BEEC20024E107 /* Main.storyboard in Resources */,
 				49E8448A1E5BEEC20024E107 /* GameScene.sks in Resources */,
 				49E844951E5BEEC20024E107 /* Assets.xcassets in Resources */,
@@ -311,6 +319,7 @@
 				49E8449E1E5BEEC20024E107 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
