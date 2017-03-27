@@ -19,6 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var birdAtlas = SKTextureAtlas(named: "player.atlas")
     var birdSprites = Array<SKTexture>()
     var bird = SKSpriteNode()
+    var coin = SKSpriteNode()
     let birdCategory: UInt32 = 0x1 << 0
     let floorCategory:UInt32 = 0x1 << 1
     var goRight = Bool(true)
@@ -29,6 +30,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         floor.anchorPoint = CGPoint(x: 0.5, y: 3);
         floor.position = CGPoint(x: 0, y: 0);
         floor.setScale(1.5)
+        
+        coin = SKSpriteNode(imageNamed: "coin")
+        coin.position = CGPoint(x: self.frame.midX, y: self.frame.maxY * 0.85)
+        coin.setScale(0.25)
         
         birdSprites.append(birdAtlas.textureNamed("player1"))
         birdSprites.append(birdAtlas.textureNamed("player2"))
@@ -55,8 +60,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         floor.physicsBody = SKPhysicsBody(edgeLoopFrom: floor.frame)
         
         createBirdPhysics()
+        createCoinPhysics()
         
         addChild(self.bird)
+        addChild(self.coin)
         addChild(self.floor)
     }
     
@@ -69,7 +76,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         bird.physicsBody?.categoryBitMask = birdCategory
         bird.physicsBody?.contactTestBitMask = floorCategory
+    }
+    
+    func createCoinPhysics() {
+        coin.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(self.coin.size.width / 2))
         
+        coin.physicsBody?.linearDamping = 0
+        coin.physicsBody?.restitution = 0
+        
+        coin.physicsBody?.categoryBitMask = birdCategory
+        coin.physicsBody?.contactTestBitMask = floorCategory
         
     }
     

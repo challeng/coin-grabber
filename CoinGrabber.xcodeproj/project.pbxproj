@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		497336131E88C7FA00F4C0F6 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 497336121E88C7FA00F4C0F6 /* coin.png */; };
 		49E844881E5BEEC20024E107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E844871E5BEEC20024E107 /* AppDelegate.swift */; };
 		49E8448A1E5BEEC20024E107 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 49E844891E5BEEC20024E107 /* GameScene.sks */; };
 		49E8448C1E5BEEC20024E107 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 49E8448B1E5BEEC20024E107 /* Actions.sks */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		497336121E88C7FA00F4C0F6 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
 		49E844841E5BEEC20024E107 /* CoinGrabber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinGrabber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E844871E5BEEC20024E107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49E844891E5BEEC20024E107 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				49F07D0C1E8200DF00AFD134 /* floor.png */,
+				497336121E88C7FA00F4C0F6 /* coin.png */,
 				49F07D081E8200A800AFD134 /* player.atlas */,
 				49E844871E5BEEC20024E107 /* AppDelegate.swift */,
 				49E844891E5BEEC20024E107 /* GameScene.sks */,
@@ -142,6 +145,7 @@
 				49F07D0D1E8200DF00AFD134 /* floor.png in Resources */,
 				49E844931E5BEEC20024E107 /* Main.storyboard in Resources */,
 				49E8448A1E5BEEC20024E107 /* GameScene.sks in Resources */,
+				497336131E88C7FA00F4C0F6 /* coin.png in Resources */,
 				49E844951E5BEEC20024E107 /* Assets.xcassets in Resources */,
 				49E844981E5BEEC20024E107 /* LaunchScreen.storyboard in Resources */,
 				49E8448C1E5BEEC20024E107 /* Actions.sks in Resources */,
