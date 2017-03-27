@@ -114,6 +114,7 @@
 				TargetAttributes = {
 					49E844831E5BEEC20024E107 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 3QCM2H4ZRK;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -284,6 +285,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3QCM2H4ZRK;
 				INFOPLIST_FILE = CoinGrabber/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jimch.CoinGrabber;
@@ -296,6 +298,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3QCM2H4ZRK;
 				INFOPLIST_FILE = CoinGrabber/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jimch.CoinGrabber;

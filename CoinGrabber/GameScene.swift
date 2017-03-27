@@ -21,9 +21,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var bird = SKSpriteNode()
     var coin = SKSpriteNode()
     let birdCategory: UInt32 = 0x1 << 0
-    let floorCategory:UInt32 = 0x1 << 1
+    let coinCategory: UInt32 = 0x1 << 1
     var goRight = Bool(true)
     var speedMult = 1.0
+    var scoreLabel: SKLabelNode!
+    var score = 0
     
     override func didMove(to view: SKView) {
         floor = SKSpriteNode(imageNamed: "floor")
@@ -54,17 +56,64 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsBody = SKPhysicsBody(edgeLoopFrom: self.frame)
         self.physicsWorld.contactDelegate = self
         
-        floor.physicsBody?.categoryBitMask = floorCategory
-        floor.physicsBody?.contactTestBitMask = birdCategory
+        //floor.physicsBody?.categoryBitMask = floorCategory
+        //floor.physicsBody?.contactTestBitMask = birdCategory
         
-        floor.physicsBody = SKPhysicsBody(edgeLoopFrom: floor.frame)
+        //floor.physicsBody = SKPhysicsBody(edgeLoopFrom: floor.frame)
         
         createBirdPhysics()
         createCoinPhysics()
         
+        setScoreLabel()
+        
         addChild(self.bird)
         addChild(self.coin)
-        addChild(self.floor)
+        //addChild(self.floor)
+        
+        
+        
+    }
+    
+    func setScoreLabel() {
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        setScoreText()
+        scoreLabel.horizontalAlignmentMode = .center
+        scoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY * 0.95)
+        addChild(scoreLabel)
+    }
+    
+    func setScoreText() {
+        scoreLabel.text = "Score: \(score)"
+    }
+    
+    func spawnCoin() {
+        let randomX = Double(arc4random_uniform(UInt32(self.frame.maxX)))
+        let randomY = Double(arc4random_uniform(UInt32(self.frame.maxY)))
+        print(randomX)
+        print(randomY)
+        
+        
+        let newCoin = SKSpriteNode(imageNamed: "coin")
+        newCoin.position = CGPoint(x: randomX, y: randomY)
+        newCoin.setScale(0.25)
+        
+        
+        
+        newCoin.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(newCoin.size.width / 2))
+        
+        newCoin.physicsBody?.linearDamping = 0
+        newCoin.physicsBody?.restitution = 1
+        newCoin.physicsBody?.isDynamic = true
+        
+        newCoin.physicsBody?.categoryBitMask = coinCategory
+        newCoin.physicsBody?.contactTestBitMask = birdCategory
+        
+        self.coin = newCoin
+        
+        addChild(self.coin)
+        
+        
+        
     }
     
     func createBirdPhysics() {
@@ -73,48 +122,63 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         bird.physicsBody?.linearDamping = 0
         bird.physicsBody?.restitution = 0
+        bird.physicsBody?.isDynamic = true
         
         bird.physicsBody?.categoryBitMask = birdCategory
-        bird.physicsBody?.contactTestBitMask = floorCategory
+        bird.physicsBody?.contactTestBitMask = coinCategory
     }
     
     func createCoinPhysics() {
         coin.physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(self.coin.size.width / 2))
         
         coin.physicsBody?.linearDamping = 0
-        coin.physicsBody?.restitution = 0
+        coin.physicsBody?.restitution = 1
+        coin.physicsBody?.isDynamic = true
         
-        coin.physicsBody?.categoryBitMask = birdCategory
-        coin.physicsBody?.contactTestBitMask = floorCategory
+        coin.physicsBody?.categoryBitMask = coinCategory
+        coin.physicsBody?.contactTestBitMask = birdCategory
         
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        if (contact.bodyA.node == coin && contact.bodyB.node == bird) || (contact.bodyA.node == bird && contact.bodyB.node == coin){
+            score += 1
+            setScoreText()
+            coin.removeFromParent()
+            let timer = Timer(timeInterval: 1.0, target: self, selector: #selector(self.spawnCoin), userInfo: nil, repeats: false)
+            RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+        }
     }
     
     
     func touchDown(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.green
-            self.addChild(n)
-        }
+
     }
     
     func touchMoved(toPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.blue
-            self.addChild(n)
-        }
+
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.red
-            self.addChild(n)
-        }
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        let location = touch?.location(in: self)
+
+        let xDir = (location?.x)! - bird.position.x
+        let yDir = (location?.y)! - bird.position.y
+        
+        self.bird.physicsBody!.applyImpulse(CGVector(dx: xDir, dy: yDir))
+        
+        
+        
+        
+        
+        
+        
+        /*
         if (self.goRight) {
             self.bird.physicsBody!.applyImpulse(CGVector(dx: 0, dy: 0))
             self.bird.physicsBody!.applyImpulse(CGVector(dx: 140 * self.speedMult, dy: 0))
@@ -125,6 +189,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.bird.physicsBody!.applyImpulse(CGVector(dx: -140 * self.speedMult, dy: 0))
             self.goRight = true
         }
+        */
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
