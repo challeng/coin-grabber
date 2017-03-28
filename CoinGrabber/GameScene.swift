@@ -26,6 +26,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var speedMult = 1.0
     var scoreLabel: SKLabelNode!
     var score = 0
+    var backArrow = SKSpriteNode()
     
     override func didMove(to view: SKView) {
         floor = SKSpriteNode(imageNamed: "floor")
@@ -63,6 +64,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         createBirdPhysics()
         createCoinPhysics()
+        addBackArrow()
         
         setScoreLabel()
         
@@ -74,12 +76,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func addBackArrow() {
+        backArrow = SKSpriteNode(imageNamed: "back_arrow")
+        backArrow.position = CGPoint(x: self.frame.midX, y: self.frame.maxY * 0.93)
+        backArrow.setScale(0.13)
+        addChild(backArrow)
+        
+    }
+    
     func setScoreLabel() {
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
         scoreLabel.fontSize = 50
         setScoreText()
         scoreLabel.horizontalAlignmentMode = .center
-        scoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY * 0.95)
+        scoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
         addChild(scoreLabel)
     }
     
@@ -161,12 +171,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     }
     
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first
-        let location = touch?.location(in: self)
+        
+        let pos = touch?.location(in: self)
+        let node = self.atPoint(pos!)
+            
+        if node == backArrow {
+            if view != nil {
+                let transition:SKTransition = SKTransition.fade(withDuration: 0.2)
+                let scene:SKScene = MenuScene(size: self.size)
+                self.view?.presentScene(scene, transition: transition)
+            }
+        }
+        
+    
+    
+        
+        
+        
 
-        let xDir = (location?.x)! - bird.position.x
-        let yDir = (location?.y)! - bird.position.y
+
+        let xDir = (pos?.x)! - bird.position.x
+        let yDir = (pos?.y)! - bird.position.y
         
         self.bird.physicsBody!.applyImpulse(CGVector(dx: xDir, dy: yDir))
         

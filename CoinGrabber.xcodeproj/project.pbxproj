@@ -10,6 +10,7 @@
 		490759E61E89E44900BE7CD1 /* coin-us-dollar.png in Resources */ = {isa = PBXBuildFile; fileRef = 490759E51E89E44900BE7CD1 /* coin-us-dollar.png */; };
 		490759EE1E89EA1100BE7CD1 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490759ED1E89EA1100BE7CD1 /* MenuScene.swift */; };
 		490759F01E89EB7400BE7CD1 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 490759EF1E89EB7400BE7CD1 /* MenuScene.sks */; };
+		490759F21E89FF4D00BE7CD1 /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 490759F11E89FF4D00BE7CD1 /* back_arrow.png */; };
 		497336131E88C7FA00F4C0F6 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 497336121E88C7FA00F4C0F6 /* coin.png */; };
 		49E844881E5BEEC20024E107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E844871E5BEEC20024E107 /* AppDelegate.swift */; };
 		49E8448A1E5BEEC20024E107 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 49E844891E5BEEC20024E107 /* GameScene.sks */; };
@@ -27,6 +28,7 @@
 		490759E51E89E44900BE7CD1 /* coin-us-dollar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "coin-us-dollar.png"; sourceTree = "<group>"; };
 		490759ED1E89EA1100BE7CD1 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		490759EF1E89EB7400BE7CD1 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
+		490759F11E89FF4D00BE7CD1 /* back_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_arrow.png; sourceTree = "<group>"; };
 		497336121E88C7FA00F4C0F6 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
 		49E844841E5BEEC20024E107 /* CoinGrabber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoinGrabber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49E844871E5BEEC20024E107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				49F07D0C1E8200DF00AFD134 /* floor.png */,
 				497336121E88C7FA00F4C0F6 /* coin.png */,
 				490759E51E89E44900BE7CD1 /* coin-us-dollar.png */,
+				490759F11E89FF4D00BE7CD1 /* back_arrow.png */,
 				49F07D081E8200A800AFD134 /* player.atlas */,
 				49E844871E5BEEC20024E107 /* AppDelegate.swift */,
 				49E8448B1E5BEEC20024E107 /* Actions.sks */,
@@ -156,6 +159,7 @@
 				49E844931E5BEEC20024E107 /* Main.storyboard in Resources */,
 				490759F01E89EB7400BE7CD1 /* MenuScene.sks in Resources */,
 				49E8448A1E5BEEC20024E107 /* GameScene.sks in Resources */,
+				490759F21E89FF4D00BE7CD1 /* back_arrow.png in Resources */,
 				497336131E88C7FA00F4C0F6 /* coin.png in Resources */,
 				49E844951E5BEEC20024E107 /* Assets.xcassets in Resources */,
 				490759E61E89E44900BE7CD1 /* coin-us-dollar.png in Resources */,
