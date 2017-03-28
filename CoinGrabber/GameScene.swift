@@ -76,6 +76,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setScoreLabel() {
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.fontSize = 50
         setScoreText()
         scoreLabel.horizontalAlignmentMode = .center
         scoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY * 0.95)
@@ -89,9 +90,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func spawnCoin() {
         let randomX = Double(arc4random_uniform(UInt32(self.frame.maxX)))
         let randomY = Double(arc4random_uniform(UInt32(self.frame.maxY)))
-        print(randomX)
-        print(randomY)
-        
         
         let newCoin = SKSpriteNode(imageNamed: "coin")
         newCoin.position = CGPoint(x: randomX, y: randomY)
