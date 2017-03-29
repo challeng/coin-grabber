@@ -25,6 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var goRight = Bool(true)
     var speedMult = 1.0
     var scoreLabel: SKLabelNode!
+    var scoreColor: CGFloat = 1
     var score = 0
     var backArrow = SKSpriteNode()
     
@@ -64,12 +65,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         createBirdPhysics()
         createCoinPhysics()
-        addBackArrow()
+        //addBackArrow()
         
         setScoreLabel()
         
+        spawnCoin()
+        
         addChild(self.bird)
-        addChild(self.coin)
+        //addChild(self.coin)
         //addChild(self.floor)
         
         
@@ -86,15 +89,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setScoreLabel() {
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
-        scoreLabel.fontSize = 50
+        scoreLabel.fontSize = 200
         setScoreText()
         scoreLabel.horizontalAlignmentMode = .center
-        scoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        scoreLabel.position = CGPoint(x: self.frame.midX, y: self.frame.maxY * 0.60)
+        
         addChild(scoreLabel)
     }
     
     func setScoreText() {
-        scoreLabel.text = "Score: \(score)"
+        scoreLabel.text = "\(score)"
+        scoreLabel.fontColor = SKColor(red: scoreColor, green: scoreColor, blue: scoreColor, alpha: 1.0)
     }
     
     func spawnCoin() {
@@ -152,6 +157,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (contact.bodyA.node == coin && contact.bodyB.node == bird) || (contact.bodyA.node == bird && contact.bodyB.node == coin){
             score += 1
             setScoreText()
+            addColorChange()
             coin.removeFromParent()
             let timer = Timer(timeInterval: 1.0, target: self, selector: #selector(self.spawnCoin), userInfo: nil, repeats: false)
             RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
@@ -199,24 +205,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.bird.physicsBody!.applyImpulse(CGVector(dx: xDir, dy: yDir))
         
         
-        
-        
-        
-        
-        
-        /*
-        if (self.goRight) {
-            self.bird.physicsBody!.applyImpulse(CGVector(dx: 0, dy: 0))
-            self.bird.physicsBody!.applyImpulse(CGVector(dx: 140 * self.speedMult, dy: 0))
-            self.speedMult = 2
-            self.goRight = false
-        } else {
-            self.bird.physicsBody!.applyImpulse(CGVector(dx: 0, dy: 0))
-            self.bird.physicsBody!.applyImpulse(CGVector(dx: -140 * self.speedMult, dy: 0))
-            self.goRight = true
-        }
-        */
+
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+    }
+    
+    func addColorChange() {
+        scoreColor = (10000 - CGFloat(score)) / 10000
+        setScoreText()
+        
+        
+        if score > 0 && score <= 10000 {
+            scoreColor = (10000 - CGFloat(score)) / 10000
+            print(scoreColor)
+            setScoreText()
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -234,5 +236,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+
     }
 }
